@@ -1,6 +1,5 @@
 // Dependencies 
 let express = require("express");
-let path = require("path");
 
 // Tells node that we are creating an "express" server
 let app = express();
