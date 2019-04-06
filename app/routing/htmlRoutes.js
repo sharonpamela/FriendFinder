@@ -7,6 +7,7 @@ module.exports = function(app) {
     });
 
     app.get("/", function(req, res){
+        console.log(req);
         res.sendFile(path.join (__dirname, "../public/home.html"));
     });
 }

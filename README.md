@@ -1,6 +1,6 @@
 # FriendFinder
 
-This applecation is a compatibility-based "FriendFinder" -- basically a dating app. This full-stack site will take in results from your users' surveys, then compare their answers with those from other users. The app will then display the name and picture of the user with the best overall "match" according to how they've answered the survey.
+This applecation is a compatibility-based "FriendFinder", basically a dating app. This full-stack site will take in results from a users' response to a survey, then compare their answers with those from other users. The app will then display the name and picture of the user with the best overall "match" according to how the current user answered the survey.
 
 It uses Express to handle routing and it is deployed using Heroku so other users can fill it out.
 
@@ -29,3 +29,4 @@ The file structure consists of the following:
     - package.json: pkg containing the info about the dependencies of the app
     - server.js: setup of the express server.
   ```
+

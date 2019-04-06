@@ -38,7 +38,7 @@
         <h3><strong>Question 1</strong></h3>
         <h4>You usually follow your heart over your head.</h4>
         <select class="chosen-select" id="q1">
-            <option value=""></option>
+            <option value=""> </option>
             <option value="1">1 (Strongly Disagree)</option>
             <option value="2">2</option>
             <option value="3">3</option>
@@ -49,7 +49,7 @@
         <h3><strong>Question 2</strong></h3>
         <h4>Each day must be lived to the fullest regardless of current circumstances.</h4>
         <select class="chosen-select" id="q2">
-            <option value=""></option>
+            <option value=""> </option>
             <option value="1">1 (Strongly Disagree)</option>
             <option value="2">2</option>
             <option value="3">3</option>
@@ -61,7 +61,7 @@
         <h3><strong>Question 3</strong></h3>
         <h4>You like sharing all the things.</h4>
         <select class="chosen-select" id="q3">
-            <option value=""></option>
+            <option value=""> </option>
             <option value="1">1 (Strongly Disagree)</option>
             <option value="2">2</option>
             <option value="3">3</option>
@@ -73,7 +73,7 @@
         <h3><strong>Question 4</strong></h3>
         <h4>Knowing about other cultures and maybe having a second language is very important.</h4>
         <select class="chosen-select" id="q4">
-            <option value=""></option>
+            <option value=""> </option>
             <option value="1">1 (Strongly Disagree)</option>
             <option value="2">2</option>
             <option value="3">3</option>
@@ -85,7 +85,7 @@
         <h3><strong>Question 5</strong></h3>
         <h4>You prefer the great outdoors over indoor activities.</h4>
         <select class="chosen-select" id="q5">
-            <option value=""></option>
+            <option value=""> </option>
             <option value="1">1 (Strongly Disagree)</option>
             <option value="2">2</option>
             <option value="3">3</option>
@@ -97,7 +97,7 @@
         <h3><strong>Question 6</strong></h3>
         <h4>It is often difficult for you to relate to other people’s feelings.</h4>
         <select class="chosen-select" id="q6">
-            <option value=""></option>
+            <option value=""> </option>
             <option value="1">1 (Strongly Disagree)</option>
             <option value="2">2</option>
             <option value="3">3</option>
@@ -109,7 +109,7 @@
         <h3><strong>Question 7</strong></h3>
         <h4>Keeping fit and healthy is a "must do" for everybody.</h4>
         <select class="chosen-select" id="q7">
-            <option value=""></option>
+            <option value=""> </option>
             <option value="1">1 (Strongly Disagree)</option>
             <option value="2">2</option>
             <option value="3">3</option>
@@ -120,7 +120,7 @@
         <h3><strong>Question 8</strong></h3>
         <h4>When it comes to partying activities,you and your friends know exactly how to do it.</h4>
         <select class="chosen-select" id="q8">
-            <option value=""></option>
+            <option value=""> </option>
             <option value="1">1 (Strongly Disagree)</option>
             <option value="2">2</option>
             <option value="3">3</option>
@@ -131,7 +131,7 @@
         <h3><strong>Question 9</strong></h3>
         <h4>You prefer to watch the movie over reading the book.</h4>
         <select class="chosen-select" id="q9">
-            <option value=""></option>
+            <option value=""> </option>
             <option value="1">1 (Strongly Disagree)</option>
             <option value="2">2</option>
             <option value="3">3</option>
@@ -142,7 +142,7 @@
         <h3><strong>Question 10</strong></h3>
         <h4>Holiday gatherings? Nah, let's get the hell out of the country instead.</h4>
         <select class="chosen-select" id="q10">
-            <option value=""></option>
+            <option value=" "> </option>
             <option value="1">1 (Strongly Disagree)</option>
             <option value="2">2</option>
             <option value="3">3</option>
@@ -164,7 +164,6 @@
                         href="https://github.com/sharonpamela/FriendFinder">GitHub Repo</a></p>
             </div>
         </footer>
-
     </div>
 
     <!-- Modal -->
@@ -207,8 +206,6 @@
         };
 
         for (var selector in config) {
-            console.log("selector:" + selector);
-            console.log(config[selector]);
             $(selector).chosen(config[selector]);
         }
 
@@ -226,7 +223,6 @@
                 });
 
                 $(".chosen-select").each(function () {
-
                     if ($(this).val() === "") {
                         isValid = false;
                     }
@@ -254,6 +250,16 @@
                     ]
                 };
 
+                // clear form and boxes
+                $("#name").val("");
+                $("#photo").val("");
+
+                // if not using "chosen-select library" this can be achieved by doing $("<class-name>").val(false);
+                // clear the "underlying" value of the select
+                $(".chosen-single").val("");
+                // clear the span (label) of the select box
+                $(".chosen-single span").text("Select an option");
+
                 // AJAX post the data to the friends API.
                 $.post("/api/friends", userData, function (data) {
 
@@ -263,17 +269,8 @@
 
                     // Show the modal with the best match
                     $("#results-modal").modal("toggle");
-
-                    $(".form-control").each(function () {
-                        $(this).val() = "";
-                    });
-
-                    $(".chosen-select").each(function () {
-                        $(this).val() = "";
-                        //$("select option").prop("selected", false);
-                    });
-
-                });
+                    }
+                );
             } else {
                 alert("Please fill out all fields before submitting!");
             }
